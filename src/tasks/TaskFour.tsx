@@ -1,96 +1,113 @@
-import { useForm } from "react-hook-form";
-
-type FormData = {
-  fullName: string;
-  email: string;
-  password: string;
-  passwordConfirmation: string;
-  terms: boolean;
-};
+import React from 'react';
+import { useForm, Controller } from 'react-hook-form';
+import { toast, ToastContainer } from 'react-toastify';
+import 'react-toastify/dist/ReactToastify.css';
+import Container from '@components/Container';
+import Input from '@components/Input';
 
 const TaskFour = () => {
-  const {
-    register,
-    handleSubmit,
-    watch,
-    formState: { errors, isSubmitting },
-  } = useForm<FormData>({
-    mode: "onBlur",
-  });
+	const {
+		handleSubmit,
+		control,
+		formState: { errors },
+		getValues,
+		reset,
+	} = useForm({
+		defaultValues: {
+			fullName: '',
+			email: '',
+			password: '',
+			confirmPassword: '',
+			agreeToTerms: false,
+		},
+	});
 
-  const onSubmit = (data: FormData) => {
-    console.log(data);
-  };
+	const onSubmit = (data: any) => {
+		console.log('Form submitted:', data);
+		toast.success('Registration successful!', {
+			position: 'top-right',
+			autoClose: 3000,
+			hideProgressBar: false,
+			closeOnClick: true,
+			pauseOnHover: true,
+			draggable: true,
+			progress: undefined,
+		});
+		reset();
+	};
 
-  const password = watch("password");
-  return (
-    <form onSubmit={handleSubmit(onSubmit)} className="registration-form">
-      <div className="form-group">
-        <label htmlFor="fullName">Full Name</label>
-        <input
-          id="fullName"
-          type="text"
-          {...register("fullName", { required: "Full Name is required" })}
-        />
-        {errors.fullName && <p className="error">{errors.fullName.message}</p>}
-      </div>
-
-      <div className="form-group">
-        <label htmlFor="email">Email</label>
-        <input
-          id="email"
-          type="email"
-          {...register("email", {
-            required: "Email is required",
-            pattern: {
-              value: /^[^\s@]+@[^\s@]+\.[^\s@]+$/,
-              message: "Invalid email address",
-            },
-          })}
-        />
-        {errors.email && <p className="error">{errors.email.message}</p>}
-      </div>
-
-      <div className="form-group">
-        <label htmlFor="password">Password</label>
-        <input
-          id="password"
-          type="password"
-          {...register("password", { required: "Password is required" })}
-        />
-        {errors.password && <p className="error">{errors.password.message}</p>}
-      </div>
-
-      <div className="form-group">
-        <label htmlFor="passwordConfirmation">Confirm Password</label>
-        <input
-          id="passwordConfirmation"
-          type="password"
-          {...register("passwordConfirmation", {
-            required: "Please confirm your password",
-            validate: (value) => value === password || "Passwords do not match",
-          })}
-        />
-        {errors.passwordConfirmation && (
-          <p className="error">{errors.passwordConfirmation.message}</p>
-        )}
-      </div>
-
-      <div className="form-group">
-        <input
-          id="terms"
-          type="checkbox"
-          {...register("terms", { required: "You must agree to the terms" })}
-        />
-        <label htmlFor="terms">I agree to the Terms</label>
-        {errors.terms && <p className="error">{errors.terms.message}</p>}
-      </div>
-
-      <button type="submit" disabled={isSubmitting}>
-        Register
-      </button>
-    </form>
-  );
+	return (
+		<Container title='Task Four: Develop a Form with Validation'>
+			<form
+				onSubmit={handleSubmit(onSubmit)}
+				className='w-[400px] p-6 shadow-lg rounded-lg bg-white flex flex-col gap-3 items-center'
+			>
+				<Controller
+					name='fullName'
+					control={control}
+					rules={{ required: 'Full Name is required' }}
+					render={({ field }) => <Input {...field} placeholder='Full Name' error={errors.fullName?.message} />}
+				/>
+				<Controller
+					name='email'
+					control={control}
+					rules={{
+						required: 'Email is required',
+						pattern: {
+							value: /^[^\s@]+@[^\s@]+\.[^\s@]+$/,
+							message: 'Invalid email format',
+						},
+					}}
+					render={({ field }) => <Input {...field} type='email' placeholder='Email' error={errors.email?.message} />}
+				/>
+				<Controller
+					name='password'
+					control={control}
+					rules={{ required: 'Password is required' }}
+					render={({ field }) => (
+						<Input {...field} type='password' placeholder='Password' error={errors.password?.message} />
+					)}
+				/>
+				<Controller
+					name='confirmPassword'
+					control={control}
+					rules={{
+						required: 'Confirm Password is required',
+						validate: (value) => value === getValues('password') || 'Passwords do not match',
+					}}
+					render={({ field }) => (
+						<Input {...field} type='password' placeholder='Confirm Password' error={errors.confirmPassword?.message} />
+					)}
+				/>
+				<div className='mb-4'>
+					<Controller
+						name='agreeToTerms'
+						control={control}
+						rules={{ required: 'You must agree to the terms' }}
+						render={({ field }) => (
+							<label className='inline-flex items-center'>
+								<input
+									type='checkbox'
+									checked={field.value}
+									onChange={field.onChange}
+									onBlur={field.onBlur}
+									name={field.name}
+									ref={field.ref}
+									className='mr-2'
+								/>
+								I agree to the terms
+							</label>
+						)}
+					/>
+					{errors.agreeToTerms && <p className='text-red-500 text-sm mt-1'>{errors.agreeToTerms.message}</p>}
+				</div>
+				<button type='submit' className='w-fit p-2 bg-blue-500 text-white rounded-md'>
+					Register
+				</button>
+			</form>
+			<ToastContainer />
+		</Container>
+	);
 };
 
 export default TaskFour;
