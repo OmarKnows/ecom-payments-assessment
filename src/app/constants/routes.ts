@@ -1,4 +1,5 @@
 export enum ROUTES {
+  HOME = "/",
   TASK_ONE = "/task-one",
   TASK_TWO = "/task-two",
   TASK_THREE = "/task-three",
