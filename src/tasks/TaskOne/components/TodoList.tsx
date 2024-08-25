@@ -10,7 +10,7 @@ interface TodoListProps {
 
 const TodoList: FC<TodoListProps> = ({ todos, toggleTodo, deleteTodo }) => {
   return (
-    <div className="w-[300px] border-collapse text-center">
+    <div className="w-[400px] border-collapse text-center">
       {todos.length === 0 ? (
         <p className="p-4 text-gray-500">No todos available</p>
       ) : (

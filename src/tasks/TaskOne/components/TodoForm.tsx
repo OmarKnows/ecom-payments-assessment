@@ -29,25 +29,26 @@ const TodoForm: FC<ITodoFormProps> = ({ addTodo }) => {
     setDescription(e.target.value);
 
   return (
-    <form onSubmit={handleSubmit} className="flex flex-col gap-2 w-[300px]">
-      <div>
-        <Input
-          type="text"
-          value={title}
-          onChange={handleTitleChange}
-          placeholder="Title"
-        />
-      </div>
-      <div>
-        <Input
-          type="text"
-          value={description}
-          onChange={handleDescriptionChange}
-          placeholder="Description"
-        />
-      </div>
+    <form
+      onSubmit={handleSubmit}
+      className="flex flex-col gap-3 w-[400px] items-center"
+    >
+      <Input
+        type="text"
+        value={title}
+        onChange={handleTitleChange}
+        placeholder="Title"
+      />
+      <Input
+        type="text"
+        value={description}
+        onChange={handleDescriptionChange}
+        placeholder="Description"
+      />
       {error && <p className="text-red-500">{error}</p>}
-      <Button type="submit">Add Todo</Button>
+      <Button type="submit" className="w-fit">
+        Add Todo
+      </Button>
     </form>
   );
 };
