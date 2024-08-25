@@ -1,9 +1,8 @@
-import React from 'react';
-import { useForm, Controller } from 'react-hook-form';
-import { toast, ToastContainer } from 'react-toastify';
-import 'react-toastify/dist/ReactToastify.css';
 import Container from '@components/Container';
 import Input from '@components/Input';
+import { Controller, useForm } from 'react-hook-form';
+import { ToastContainer, toast } from 'react-toastify';
+import 'react-toastify/dist/ReactToastify.css';
 
 const TaskFour = () => {
 	const {
