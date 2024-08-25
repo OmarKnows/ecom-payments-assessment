@@ -2,7 +2,7 @@ import App from "@/App";
 import Home from "@/Home";
 import TaskFive from "@/tasks/TaskFive";
 import TaskFour from "@/tasks/TaskFour";
-import TaskOne from "@/tasks/TaskOne";
+import TaskOne from "@/tasks/TaskOne/TaskOne";
 import TaskThree from "@/tasks/TaskThree";
 import TaskTwo from "@/tasks/TaskTwo";
 import { ROUTES } from "@/constants/routes";
