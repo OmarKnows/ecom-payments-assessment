@@ -1,30 +1,33 @@
-# React + TypeScript + Vite
+## E-Com Payments Assessment
 
-This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
+This project is a submission to E-Com Payments frontend assesment.
 
-Currently, two official plugins are available:
 
-- [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react/README.md) uses [Babel](https://babeljs.io/) for Fast Refresh
-- [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react-swc) uses [SWC](https://swc.rs/) for Fast Refresh
+## Notes:
 
-## Expanding the ESLint configuration
+- Built with React 18.3.1, Typescript 5.2.2, vite 5.3.4.
+- Tailwind CSS was used for styling.
+- All 5 tasks were attempted, each task has its own page in addition to the home page.
 
-If you are developing a production application, we recommend updating the configuration to enable type aware lint rules:
 
-- Configure the top-level `parserOptions` property like this:
+## Task 5:
+In this task it was asked to optimize a component. This was achieved using memo, UseMemo, UseCallBack.
+The purpose of these tools is to save components, constants and functions in the memory such that they can be retrieved quickly when a re-render is required without having to re-calculate anything.
+I have demonstrated the difference by making two components, one optimized and one unoptimized paired with a re-render button.
+Initially, the render times for both will be high, however if the re-render button is pressed, the time taken to render the optimized component is significantly less.
+This is demonstrated in the console and this screenshot where the render times are provided, these numbers are provided by react profiler.
 
-```js
-export default {
-  // other rules...
-  parserOptions: {
-    ecmaVersion: 'latest',
-    sourceType: 'module',
-    project: ['./tsconfig.json', './tsconfig.node.json', './tsconfig.app.json'],
-    tsconfigRootDir: __dirname,
-  },
-}
-```
+![Screenshot Description](https://github.com/OmarKnows/ecom-payments-assessment/blob/main/screenshot.png?raw=true)
 
-- Replace `plugin:@typescript-eslint/recommended` to `plugin:@typescript-eslint/recommended-type-checked` or `plugin:@typescript-eslint/strict-type-checked`
-- Optionally add `plugin:@typescript-eslint/stylistic-type-checked`
-- Install [eslint-plugin-react](https://github.com/jsx-eslint/eslint-plugin-react) and add `plugin:react/recommended` & `plugin:react/jsx-runtime` to the `extends` list
+As you can see, the initial actualTime when the component mounts is around 2000ms for both the optimized and unoptimized component, however when the components update, the optimized reduces to almost 0ms while the unoptimized component remains above 2000ms, Thus succesfully reaching improved performance in the optimized component.
+
+## How To Run
+
+1. Clone the repository:
+   ```git clone https://github.com/OmarKnows/ecom-payments-assessment.git```
+2. Navigate to the project directory:
+  ```cd ecom-payments-assessment```
+3. Install Dependencies:
+   ```npm install```
+4. Start the development server:
+   ```npm run dev```
