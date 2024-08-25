@@ -41,7 +41,6 @@ const TaskOne = () => {
 
   return (
     <Container>
-      <h1 className="text-3xl">Task One: Dynamic Todo List</h1>
       <TodoForm addTodo={handleAddTodo} />
       <TodoFilter setFilter={setFilter} />
       <TodoList

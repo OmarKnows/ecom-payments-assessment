@@ -1,3 +1,5 @@
+import Button from "@components/Button";
+import Input from "@components/Input";
 import { ChangeEvent, FC, FormEvent, useState } from "react";
 
 interface ITodoFormProps {
@@ -27,9 +29,9 @@ const TodoForm: FC<ITodoFormProps> = ({ addTodo }) => {
     setDescription(e.target.value);
 
   return (
-    <form onSubmit={handleSubmit}>
+    <form onSubmit={handleSubmit} className="flex flex-col gap-2 w-[300px]">
       <div>
-        <input
+        <Input
           type="text"
           value={title}
           onChange={handleTitleChange}
@@ -37,7 +39,7 @@ const TodoForm: FC<ITodoFormProps> = ({ addTodo }) => {
         />
       </div>
       <div>
-        <input
+        <Input
           type="text"
           value={description}
           onChange={handleDescriptionChange}
@@ -45,7 +47,7 @@ const TodoForm: FC<ITodoFormProps> = ({ addTodo }) => {
         />
       </div>
       {error && <p className="text-red-500">{error}</p>}
-      <button type="submit">Add Todo</button>
+      <Button type="submit">Add Todo</Button>
     </form>
   );
 };
