@@ -1,12 +1,12 @@
 import App from '@/App';
 import Home from '@/Home';
-import TaskFive from '@/tasks/TaskFive';
 import TaskFour from '@/tasks/TaskFour';
 import TaskOne from '@/tasks/TaskOne/TaskOne';
 import TaskTwo from '@/tasks/TaskTwo';
 import { ROUTES } from '@/constants/routes';
 import { createBrowserRouter, Navigate } from 'react-router-dom';
 import TaskThree from '@/tasks/TaskThree/TaskThree';
+import TaskFive from '@/tasks/TaskFive/TaskFive';
 
 export const router = createBrowserRouter([
 	{
