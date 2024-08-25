@@ -5,7 +5,7 @@ import TaskFour from "@/tasks/TaskFour";
 import TaskOne from "@/tasks/TaskOne";
 import TaskThree from "@/tasks/TaskThree";
 import TaskTwo from "@/tasks/TaskTwo";
-import { ROUTES } from "@constants/routes";
+import { ROUTES } from "@/constants/routes";
 import { createBrowserRouter, Navigate } from "react-router-dom";
 
 export const router = createBrowserRouter([
