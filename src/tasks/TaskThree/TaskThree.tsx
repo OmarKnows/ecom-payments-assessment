@@ -1,5 +1,5 @@
 import Container from '@components/Container';
-import Navbar from './TaskThree/NavBar';
+import Navbar from './NavBar';
 
 const TaskThree = () => {
 	return (
