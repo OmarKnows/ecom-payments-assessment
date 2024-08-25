@@ -1,4 +1,5 @@
 import App from "@/App";
+import Home from "@/Home";
 import TaskFive from "@/tasks/TaskFive";
 import TaskFour from "@/tasks/TaskFour";
 import TaskOne from "@/tasks/TaskOne";
@@ -14,7 +15,7 @@ export const router = createBrowserRouter([
     children: [
       {
         path: "/",
-        element: <Navigate to={ROUTES.TASK_ONE} replace />,
+        element: <Home />,
       },
       {
         path: ROUTES.TASK_ONE,
@@ -38,7 +39,7 @@ export const router = createBrowserRouter([
       },
       {
         path: "*",
-        element: <Navigate to={ROUTES.TASK_ONE} replace />,
+        element: <Navigate to={ROUTES.HOME} replace />,
       },
     ],
   },
