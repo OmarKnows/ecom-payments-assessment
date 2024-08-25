@@ -1,7 +1,7 @@
-import React from "react";
+import Navbar from "./TaskThree/NavBar";
 
 const TaskThree = () => {
-  return <div>TaskThree</div>;
+  return <Navbar />;
 };
 
 export default TaskThree;
