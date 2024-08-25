@@ -7,7 +7,7 @@ const Home = () => {
   const navigate = useNavigate();
 
   return (
-    <Container>
+    <Container title="Home" hideBackButton>
       <div className="flex gap-5">
         <Button variant="blue" onClick={() => navigate(ROUTES.TASK_ONE)}>
           Task One

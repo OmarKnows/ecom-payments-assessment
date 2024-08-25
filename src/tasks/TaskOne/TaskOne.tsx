@@ -40,7 +40,7 @@ const TaskOne = () => {
   const filteredTodos = filterTodos(todos, filter);
 
   return (
-    <Container>
+    <Container title="Task One: Dynamic Todo list">
       <TodoForm addTodo={handleAddTodo} />
       <TodoFilter setFilter={setFilter} />
       <TodoList
