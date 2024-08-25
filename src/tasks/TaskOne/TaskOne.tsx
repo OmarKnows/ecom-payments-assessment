@@ -14,12 +14,8 @@ import TodoList from "./components/TodoList";
 import TodoForm from "./components/TodoForm";
 
 const TaskOne = () => {
-  const [todos, setTodos] = useState<ITodo[]>([]);
+  const [todos, setTodos] = useState<ITodo[]>(loadTodos());
   const [filter, setFilter] = useState<EFilter>(EFilter.ALL);
-
-  useEffect(() => {
-    setTodos(loadTodos());
-  }, []);
 
   useEffect(() => {
     saveTodos(todos);
