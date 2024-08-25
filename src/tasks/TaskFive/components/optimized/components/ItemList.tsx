@@ -6,7 +6,7 @@ interface ItemListProps {
 	items: IItem[];
 }
 
-const ItemList: React.FC<ItemListProps> = ({ items }) => {
+const OptimizedItemList: React.FC<ItemListProps> = ({ items }) => {
 	const handleClick = useCallback((id: number) => {
 		console.log(`Item ${id} clicked`);
 	}, []);
@@ -15,7 +15,12 @@ const ItemList: React.FC<ItemListProps> = ({ items }) => {
 		return items.map((item) => <Item key={item.id} item={item} onClick={handleClick} />);
 	}, [items, handleClick]);
 
-	return <div className='bg-white p-4 rounded shadow-md'>{renderedItems}</div>;
+	return (
+		<div className='bg-white p-4 rounded shadow-md text-center'>
+			Optimized
+			{renderedItems}
+		</div>
+	);
 };
 
-export default ItemList;
+export default OptimizedItemList;

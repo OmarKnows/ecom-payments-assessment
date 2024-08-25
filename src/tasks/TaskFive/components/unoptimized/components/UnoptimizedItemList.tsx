@@ -13,7 +13,7 @@ const UnoptimizedItemList: React.FC<IUnoptimizedItemListProps> = ({ items }) => 
 
 	const renderedItems = items.map((item) => <UnoptimizedItem key={item.id} item={item} onClick={handleClick} />);
 
-	return <div className='bg-white p-4 rounded shadow-md'>{renderedItems}</div>;
+	return <div className='bg-white p-4 rounded shadow-md text-center'>Unoptimized {renderedItems}</div>;
 };
 
 export default UnoptimizedItemList;

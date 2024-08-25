@@ -1,17 +1,46 @@
+import Button from '@components/Button';
 import Container from '@components/Container';
-import ItemList from './components/ItemList';
-import UnoptimizedItemList from './components/unoptimizedComponents/UnoptimizedItemList';
-
-const sampleItems = Array.from({ length: 100 }, (_, index) => ({
-	id: index + 1,
-	data: `Item ${index + 1}`,
-}));
+import { Profiler, useState } from 'react';
+import Optimized from './components/optimized/Optimized';
+import Unoptimized from './components/unoptimized/Unoptimized';
 
 const TaskFive = () => {
+	const [rerender, setRerender] = useState(true);
 	return (
 		<Container title='Task Five: Optimize a React Component'>
-			<ItemList items={sampleItems} />
-			{/* <UnoptimizedItemList items={sampleItems} /> */}
+			<Button onClick={() => setRerender((prev) => !prev)}>Rerender</Button>
+			<div className='flex gap-10 mt-5'>
+				<Profiler
+					id='Optimized'
+					onRender={(id, phase, actualDuration, baseDuration, startTime, commitTime) =>
+						console.table({
+							id,
+							phase,
+							actualDuration,
+							baseDuration,
+							startTime,
+							commitTime,
+						})
+					}
+				>
+					<Optimized />
+				</Profiler>
+				<Profiler
+					id='Unoptimized'
+					onRender={(id, phase, actualDuration, baseDuration, startTime, commitTime) =>
+						console.table({
+							id,
+							phase,
+							actualDuration,
+							baseDuration,
+							startTime,
+							commitTime,
+						})
+					}
+				>
+					<Unoptimized />
+				</Profiler>
+			</div>
 		</Container>
 	);
 };

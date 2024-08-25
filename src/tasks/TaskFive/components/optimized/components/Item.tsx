@@ -6,7 +6,7 @@ interface IItemProps {
 	onClick: (id: number) => void;
 }
 
-const Item: FC<IItemProps> = React.memo(({ item, onClick }) => {
+const OptimizedItem: FC<IItemProps> = React.memo(({ item, onClick }) => {
 	console.log(`Rendering item ${item.id}`);
 
 	const computedValue = computeExpensiveValue(item.data);
@@ -21,10 +21,10 @@ const Item: FC<IItemProps> = React.memo(({ item, onClick }) => {
 
 const computeExpensiveValue = (data: string): string => {
 	let result = 0;
-	for (let i = 0; i < 1000000; i++) {
+	for (let i = 0; i < 10000000; i++) {
 		result += i;
 	}
 	return `${data} (${result})`;
 };
 
-export default Item;
+export default OptimizedItem;

@@ -21,7 +21,7 @@ const UnoptimizedItem: FC<IUnoptimizedItemProps> = ({ item, onClick }) => {
 
 const computeExpensiveValue = (data: string): string => {
 	let result = 0;
-	for (let i = 0; i < 1000000; i++) {
+	for (let i = 0; i < 10000000; i++) {
 		result += i;
 	}
 	return `${data} (${result})`;
